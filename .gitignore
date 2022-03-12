@@ -10,6 +10,7 @@ build
 *.so
 *.o
 *.prof
+*.off
 .nfs*
 /im2mesh/utils/libmcubes/mcubes.cpp
 /im2mesh/utils/libsimplify/simplify_mesh.cpp
