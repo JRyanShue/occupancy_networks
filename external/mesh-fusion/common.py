@@ -109,6 +109,7 @@ def read_off(file):
     """
 
     assert os.path.exists(file), 'file %s not found' % file
+    print('reading %s' % file)
 
     with open(file, 'r') as fp:
         lines = fp.readlines()

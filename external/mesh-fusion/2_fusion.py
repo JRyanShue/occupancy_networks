@@ -318,6 +318,7 @@ class Fusion:
         Rs = self.get_views()
 
         timer.reset()
+        print('Rendering {}'.format(filepath))
         mesh = common.Mesh.from_off(filepath)
         depths = self.render(mesh, Rs)
 
@@ -334,6 +335,7 @@ class Fusion:
 
         # As rendering might be slower, we wait for rendering to finish.
         # This allows to run rendering and fusing in parallel (more or less).
+        print('Fusing {}'.format(filepath))
         depths = common.read_hdf5(filepath)
 
         timer.reset()

@@ -1,7 +1,9 @@
 #!bin/bash
 # Make a shapenet dataset in .off format watertight
 
-for CATEGORY in input_meshes_shapenet_off/shapenet/train/*
+path=$1
+
+for CATEGORY in ${path}/*
 do 
     category_name=$(basename -- "$CATEGORY")
 
@@ -17,6 +19,7 @@ do
     if [[ "$category_name" == *"1_scaled"* ]]
     then
         echo "Rendering $category_name"
+        category_name=${category_name%%_*}  # Cut off the non-ID part of the folder name
         # Run rendering
         python external/mesh-fusion/2_fusion.py \
             --mode=render \
@@ -26,6 +29,7 @@ do
     if [[ "$category_name" == *"2_rendered"* ]]
     then
         echo "Fusing $category_name"
+        category_name=${category_name%%_*}  # Cut off the non-ID part of the folder name
         # Run fusion
         python external/mesh-fusion/2_fusion.py \
             --mode=fuse \
